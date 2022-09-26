@@ -89,7 +89,7 @@ public final class GeneralData extends ConfigurationProperties {
 	public static String PATIENTBILLGROUPED;
 	public static String PATIENTBILLSTATEMENT;
 	public static boolean DEBUG;
-	public static Integer SESSIONTIMEOUT;
+	public static int SESSIONTIMEOUT;
 
 	public static boolean STRONGPASSWORD;
 	public static int STRONGLENGTH;
@@ -139,7 +139,7 @@ public final class GeneralData extends ConfigurationProperties {
 	private static final String DEFAULT_PATIENTBILLSTATEMENT = "PatientBillStatement";
 	private static final boolean DEFAULT_DEBUG = false;
 	private static final int DEFAULT_STRONGLENGTH = 10;
-	private static final int DEFAULT_SESSIONTIMEOUT = 300000;
+	private static final int DEFAULT_SESSIONTIMEOUT = 5;
 
 	private static final boolean DEFAULT_STRONGPASSWORD = true;
 
