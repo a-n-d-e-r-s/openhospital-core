@@ -21,7 +21,6 @@
  */
 package org.isf.opd.model;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 import javax.persistence.AttributeOverride;
@@ -41,6 +40,7 @@ import javax.validation.constraints.NotNull;
 import org.isf.disease.model.Disease;
 import org.isf.patient.model.Patient;
 import org.isf.utils.db.Auditable;
+import org.isf.utils.time.TimeTools;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 /**
@@ -61,7 +61,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
  * ------------------------------------------
  */
 @Entity
-@Table(name = "OPD")
+@Table(name="OH_OPD")
 @EntityListeners(AuditingEntityListener.class)
 @AttributeOverride(name = "createdBy", column = @Column(name = "OPD_CREATED_BY"))
 @AttributeOverride(name = "createdDate", column = @Column(name = "OPD_CREATED_DATE"))
@@ -259,7 +259,7 @@ public class Opd extends Auditable<String> {
 		return date;
 	}
 	public void setDate(LocalDateTime date) {
-		this.date = date;
+		this.date = TimeTools.truncateToSeconds(date);
 	}
 
 	public char getSex() {
@@ -291,7 +291,7 @@ public class Opd extends Auditable<String> {
 	}
 
 	public void setNextVisitDate(LocalDateTime nextVisitDate) {
-		this.nextVisitDate = nextVisitDate;
+		this.nextVisitDate = TimeTools.truncateToSeconds(nextVisitDate);
 	}
 
 	public boolean isPersisted() {
