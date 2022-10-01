@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 5-dic-2012 22.42.31 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="org.isf.stp.model.PatientStp" table="PATIENTSTP">
+        <id name="patID" type="int">
+            <column name="STP_PAT_ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="stp" type="java.lang.String">
+            <column name="STP_CODE" />
+        </property>
+        <property name="issueDate" type="java.util.Date">
+            <column name="STP_ISSUE_DATE" />
+        </property>
+        <property name="renewDate" type="java.util.Date">
+            <column name="STP_RENEW_DATE" />
+        </property>
+        <property name="expiryDate" type="java.util.Date">
+            <column name="STP_EXPIRY_DATE" />
+        </property>
+        <property name="immigrationDate" type="java.util.Date">
+            <column name="STP_IMMIGRATION_DATE" />
+        </property>
+        <property name="homeland" type="java.lang.String">
+            <column name="STP_HOMELAND" />
+        </property>
+    </class>
+</hibernate-mapping>

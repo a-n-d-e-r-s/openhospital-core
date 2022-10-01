@@ -41,7 +41,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
  */
 @Entity
 @Table(name="OH_PATIENTHISTORY")
-@EntityListeners(AuditingEntityListener.class) 
+@EntityListeners(AuditingEntityListener.class)
 @AttributeOverrides({
     @AttributeOverride(name="createdBy", column=@Column(name="PAH_CREATED_BY")),
     @AttributeOverride(name="createdDate", column=@Column(name="PAH_CREATED_DATE")),
@@ -49,807 +49,905 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
     @AttributeOverride(name="active", column=@Column(name="PAH_ACTIVE")),
     @AttributeOverride(name="lastModifiedDate", column=@Column(name="PAH_LAST_MODIFIED_DATE"))
 })
-public class PatientHistory extends Auditable<String> implements Comparable<PatientHistory> 
+public class PatientHistory extends Auditable<String> implements Comparable<PatientHistory>
 {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "PAH_PAT_ID")
-	private int id;                         
+	private int id;
 
 	@Column(name="PAH_FAM_NOTHING")
 	private boolean familyNothing;
-	
+
 	@Column(name="PAH_FAM_HYPER")
 	private boolean familyHypertension;
-	
+
 	@Column(name="PAH_FAM_DRUGADD")
 	private boolean familyDrugAddiction;
-	
+
 	@Column(name="PAH_FAM_CARDIO")
 	private boolean familyCardiovascular;
-	
+
 	@Column(name="PAH_FAM_INFECT")
 	private boolean familyInfective;
-	
+
 	@Column(name="PAH_FAM_ENDO")
 	private boolean familyEndocrinometabol;
-	
+
 	@Column(name="PAH_FAM_RESP")
 	private boolean familyRespiratory;
-	
+
 	@Column(name="PAH_FAM_CANCER")
 	private boolean familyCancer;
-	
+
 	@Column(name="PAH_FAM_ORTO")
 	private boolean familyOrto;
-	
+
 	@Column(name="PAH_FAM_GYNO")
 	private boolean familyGyno;
-	
+
 	@Column(name="PAH_FAM_OTHER")
 	private boolean familyOther;
-	
-	@Column(name="PAH_FAM_NOTE")	
+
+	@Column(name="PAH_FAM_NOTE")
     private String familyNote;
-	
+
 	@Column(name="PAH_PAT_CLO_NOTHING")
-	private boolean pat_closed_nothing;
-	
+	private boolean patClosedNothing;
+
 	@Column(name="PAH_PAT_CLO_HYPER")
-	private boolean pat_closed_hypertension;
-	
+	private boolean patClosedHypertension;
+
 	@Column(name="PAH_PAT_CLO_DRUGADD")
-	private boolean pat_closed_drugAddiction;
-	
+	private boolean patClosedDrugaddiction;
+
 	@Column(name="PAH_PAT_CLO_CARDIO")
-	private boolean pat_closed_cardiovascular;
-	
+	private boolean patClosedCardiovascular;
+
 	@Column(name="PAH_PAT_CLO_INFECT")
-	private boolean pat_closed_infective;
-	
+	private boolean patClosedInfective;
+
 	@Column(name="PAH_PAT_CLO_ENDO")
-	private boolean pat_closed_endocrinometabol;
-	
+	private boolean patClosedEndocrinometabol;
+
 	@Column(name="PAH_PAT_CLO_RESP")
-	private boolean pat_closed_respiratory;
-	
+	private boolean patClosedRespiratory;
+
 	@Column(name="PAH_PAT_CLO_CANCER")
-	private boolean pat_closed_cancer;
-	
+	private boolean patClosedCancer;
+
 	@Column(name="PAH_PAT_CLO_ORTO")
-	private boolean pat_closed_orto;
-	
+	private boolean patClosedOrto;
+
 	@Column(name="PAH_PAT_CLO_GYNO")
-	private boolean pat_closed_gyno;
-	
+	private boolean patClosedGyno;
+
 	@Column(name="PAH_PAT_CLO_OTHER")
-	private boolean pat_closed_other;
-	
-	@Column(name="PAH_PAT_CLO_NOTE")	
-    private String pat_closed_note;
-	
+	private boolean patClosedOther;
+
+	@Column(name="PAH_PAT_CLO_NOTE")
+    private String patClosedNote;
+
 	@Column(name="PAH_PAT_OPN_NOTHING")
-	private boolean pat_open_nothing;	
-	
+	private boolean patOpenNothing;
+
 	@Column(name="PAH_PAT_OPN_HYPER")
-	private boolean pat_open_hypertension;	
-	
+	private boolean patOpenHypertension;
+
 	@Column(name="PAH_PAT_OPN_DRUGADD")
-	private boolean pat_open_drugAddiction;	
-	
+	private boolean patOpenDrugaddiction;
+
 	@Column(name="PAH_PAT_OPN_CARDIO")
-	private boolean pat_open_cardiovascular;	
-	
+	private boolean patOpenCardiovascular;
+
 	@Column(name="PAH_PAT_OPN_INFECT")
-	private boolean pat_open_infective;	
-	
+	private boolean patOpenInfective;
+
 	@Column(name="PAH_PAT_OPN_ENDO")
-	private boolean pat_open_endocrinometabol;	
-	
+	private boolean patOpenEndocrinometabol;
+
 	@Column(name="PAH_PAT_OPN_RESP")
-	private boolean pat_open_respiratory;	
-	
+	private boolean patOpenRespiratory;
+
 	@Column(name="PAH_PAT_OPN_CANCER")
-	private boolean pat_open_cancer;	
-	
+	private boolean patOpenCancer;
+
 	@Column(name="PAH_PAT_OPN_ORTO")
-	private boolean pat_open_orto;	
-	
+	private boolean patOpenOrto;
+
 	@Column(name="PAH_PAT_OPN_GYNO")
-	private boolean pat_open_gyno;	
-	
+	private boolean patOpenGyno;
+
 	@Column(name="PAH_PAT_OPN_OTHER")
-	private boolean pat_open_other;
-	
-	@Column(name="PAH_PAT_OPN_NOTE")	
-    private String pat_open_note;	
-	
-	@Column(name="PAH_PAT_SURGERY")	
-    private String pat_surgery;	
-	
-	@Column(name="PAH_PAT_ALLERGY")	
-    private String pat_allergy;	
-	
-	@Column(name="PAH_PAT_THERAPY")	
-    private String pat_therapy;	
-	
-	@Column(name="PAH_PAT_MEDICINE")	
-    private String pat_medicine;	
-	
-	@Column(name="PAH_PAT_NOTE")	
-    private String pat_note;
-	
+	private boolean patOpenOther;
+
+	@Column(name="PAH_PAT_OPN_NOTE")
+    private String patOpenNote;
+
+	@Column(name="PAH_PAT_SURGERY")
+    private String patSurgery;
+
+	@Column(name="PAH_PAT_ALLERGY")
+    private String patAllergy;
+
+	@Column(name="PAH_PAT_THERAPY")
+    private String patTherapy;
+
+	@Column(name="PAH_PAT_MEDICINE")
+    private String patMedicine;
+
+	@Column(name="PAH_PAT_NOTE")
+    private String patNote;
+
 	@Column(name="PAH_PHY_NUTR_NOR")
-	private boolean phy_nutrition_normal;
-	
-	@Column(name="PAH_PHY_NUTR_ABN")	
-    private String phy_nutrition_abnormal;
-	
+	private boolean phyNutritionNormal;
+
+	@Column(name="PAH_PHY_NUTR_ABN")
+    private String phyNutritionAbnormal;
+
 	@Column(name="PAH_PHY_ALVO_NOR")
-	private boolean phy_alvo_normal;
-	
-	@Column(name="PAH_PHY_ALVO_ABN")	
-    private String phy_alvo_abnormal;
-	
+	private boolean phyAlvoNormal;
+
+	@Column(name="PAH_PHY_ALVO_ABN")
+    private String phyAlvoAbnormal;
+
 	@Column(name="PAH_PHY_DIURE_NOR")
-	private boolean phy_diuresis_normal;
-	
-	@Column(name="PAH_PHY_DIURE_ABN")	
-    private String phy_diuresis_abnormal;
-	
+	private boolean phyDiuresisNormal;
+
+	@Column(name="PAH_PHY_DIURE_ABN")
+    private String phyDiuresisAbnormal;
+
 	@Column(name="PAH_PHY_ALCOOL")
-	private boolean phy_alcool;
-	
+	private boolean phyAlcool;
+
 	@Column(name="PAH_PHY_SMOKE")
-	private boolean phy_smoke;
-	
+	private boolean phySmoke;
+
 	@Column(name="PAH_PHY_DRUG")
-	private boolean phy_drug;
-	
+	private boolean phyDrug;
+
 	@Column(name="PAH_PHY_PERIOD_NOR")
-	private boolean phy_period_normal;
-	
-	@Column(name="PAH_PHY_PERIOD_ABN")	
-    private String phy_period_abnormal;
-	
+	private boolean phyPeriodNormal;
+
+	@Column(name="PAH_PHY_PERIOD_ABN")
+    private String phyPeriodAbnormal;
+
 	@Column(name="PAH_PHY_MENOP")
-	private boolean phy_menopause;
-	
+	private boolean phyMenopause;
+
 	@Column(name="PAH_PHY_MENOP_Y")
-	private int phy_menopause_years;
-	
+	private int phyMenopauseYears;
+
 	@Column(name="PAH_PHY_HRT_NOR")
-	private boolean phy_hrt_normal;
-	
-	@Column(name="PAH_PHY_HRT_ABN")	
-    private String phy_hrt_abnormal;
-	
+	private boolean phyHrtNormal;
+
+	@Column(name="PAH_PHY_HRT_ABN")
+    private String phyHrtAbnormal;
+
 	@Column(name="PAH_PHY_PREG")
-	private boolean phy_pregnancy;
-	
+	private boolean phyPregnancy;
+
 	@Column(name="PAH_PHY_PREG_N")
-	private int phy_pregnancy_number;
-	
+	private int phyPregnancyNumber;
+
 	@Column(name="PAH_PHY_PREG_BIRTH")
-	private int phy_pregnancy_birth;
-	
+	private int phyPregnancyBirth;
+
 	@Column(name="PAH_PHY_PREG_ABORT")
-	private int phy_pregnancy_abort;
+	private int phyPregnancyAbort;
 
 	@Override
 	public int compareTo(PatientHistory obj) {
 		return this.id - obj.getId();
 	}
 
-	
+
 	public int getId() {
 		return id;
 	}
 
-	
+
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	
+
 	public boolean isFamilyNothing() {
 		return familyNothing;
 	}
 
-	
+
 	public void setFamilyNothing(boolean familyNothing) {
 		this.familyNothing = familyNothing;
 	}
 
-	
+
 	public boolean isFamilyHypertension() {
 		return familyHypertension;
 	}
 
-	
+
 	public void setFamilyHypertension(boolean familyHypertension) {
 		this.familyHypertension = familyHypertension;
 	}
 
-	
+
 	public boolean isFamilyDrugAddiction() {
 		return familyDrugAddiction;
 	}
 
-	
+
 	public void setFamilyDrugAddiction(boolean familyDrugAddiction) {
 		this.familyDrugAddiction = familyDrugAddiction;
 	}
 
-	
+
 	public boolean isFamilyCardiovascular() {
 		return familyCardiovascular;
 	}
 
-	
+
 	public void setFamilyCardiovascular(boolean familyCardiovascular) {
 		this.familyCardiovascular = familyCardiovascular;
 	}
 
-	
+
 	public boolean isFamilyInfective() {
 		return familyInfective;
 	}
 
-	
+
 	public void setFamilyInfective(boolean familyInfective) {
 		this.familyInfective = familyInfective;
 	}
 
-	
+
 	public boolean isFamilyEndocrinometabol() {
 		return familyEndocrinometabol;
 	}
 
-	
+
 	public void setFamilyEndocrinometabol(boolean familyEndocrinometabol) {
 		this.familyEndocrinometabol = familyEndocrinometabol;
 	}
 
-	
+
 	public boolean isFamilyRespiratory() {
 		return familyRespiratory;
 	}
 
-	
+
 	public void setFamilyRespiratory(boolean familyRespiratory) {
 		this.familyRespiratory = familyRespiratory;
 	}
 
-	
+
 	public boolean isFamilyCancer() {
 		return familyCancer;
 	}
 
-	
+
 	public void setFamilyCancer(boolean familyCancer) {
 		this.familyCancer = familyCancer;
 	}
 
-	
+
 	public boolean isFamilyOrto() {
 		return familyOrto;
 	}
 
-	
+
 	public void setFamilyOrto(boolean familyOrto) {
 		this.familyOrto = familyOrto;
 	}
 
-	
+
 	public boolean isFamilyGyno() {
 		return familyGyno;
 	}
 
-	
+
 	public void setFamilyGyno(boolean familyGyno) {
 		this.familyGyno = familyGyno;
 	}
 
-	
+
 	public boolean isFamilyOther() {
 		return familyOther;
 	}
 
-	
+
 	public void setFamilyOther(boolean familyOther) {
 		this.familyOther = familyOther;
 	}
 
-	
+
 	public String getFamilyNote() {
 		return familyNote;
 	}
 
-	
+
 	public void setFamilyNote(String familyNote) {
 		this.familyNote = familyNote;
 	}
 
-	
-	public boolean isPat_closed_nothing() {
-		return pat_closed_nothing;
+
+
+	public boolean isPatClosedNothing() {
+		return patClosedNothing;
 	}
+
 
-	
-	public void setPat_closed_nothing(boolean pat_closed_nothing) {
-		this.pat_closed_nothing = pat_closed_nothing;
+
+	public void setPatClosedNothing(boolean patClosedNothing) {
+		this.patClosedNothing = patClosedNothing;
 	}
+
+
 
-	
-	public boolean isPat_closed_hypertension() {
-		return pat_closed_hypertension;
+	public boolean isPatClosedHypertension() {
+		return patClosedHypertension;
 	}
 
-	
-	public void setPat_closed_hypertension(boolean pat_closed_hypertension) {
-		this.pat_closed_hypertension = pat_closed_hypertension;
+
+
+	public void setPatClosedHypertension(boolean patClosedHypertension) {
+		this.patClosedHypertension = patClosedHypertension;
 	}
+
 
-	
-	public boolean isPat_closed_drugAddiction() {
-		return pat_closed_drugAddiction;
+
+	public boolean isPatClosedDrugaddiction() {
+		return patClosedDrugaddiction;
 	}
+
+
 
-	
-	public void setPat_closed_drugAddiction(boolean pat_closed_drugAddiction) {
-		this.pat_closed_drugAddiction = pat_closed_drugAddiction;
+	public void setPatClosedDrugaddiction(boolean patClosedDrugaddiction) {
+		this.patClosedDrugaddiction = patClosedDrugaddiction;
 	}
 
-	
-	public boolean isPat_closed_cardiovascular() {
-		return pat_closed_cardiovascular;
+
+
+	public boolean isPatClosedCardiovascular() {
+		return patClosedCardiovascular;
 	}
+
 
-	
-	public void setPat_closed_cardiovascular(boolean pat_closed_cardiovascular) {
-		this.pat_closed_cardiovascular = pat_closed_cardiovascular;
+
+	public void setPatClosedCardiovascular(boolean patClosedCardiovascular) {
+		this.patClosedCardiovascular = patClosedCardiovascular;
 	}
+
+
 
-	
-	public boolean isPat_closed_infective() {
-		return pat_closed_infective;
+	public boolean isPatClosedInfective() {
+		return patClosedInfective;
 	}
 
-	
-	public void setPat_closed_infective(boolean pat_closed_infective) {
-		this.pat_closed_infective = pat_closed_infective;
+
+
+	public void setPatClosedInfective(boolean patClosedInfective) {
+		this.patClosedInfective = patClosedInfective;
 	}
+
 
-	
-	public boolean isPat_closed_endocrinometabol() {
-		return pat_closed_endocrinometabol;
+
+	public boolean isPatClosedEndocrinometabol() {
+		return patClosedEndocrinometabol;
 	}
+
+
 
-	
-	public void setPat_closed_endocrinometabol(boolean pat_closed_endocrinometabol) {
-		this.pat_closed_endocrinometabol = pat_closed_endocrinometabol;
+	public void setPatClosedEndocrinometabol(boolean patClosedEndocrinometabol) {
+		this.patClosedEndocrinometabol = patClosedEndocrinometabol;
 	}
 
-	
-	public boolean isPat_closed_respiratory() {
-		return pat_closed_respiratory;
+
+
+	public boolean isPatClosedRespiratory() {
+		return patClosedRespiratory;
 	}
+
 
-	
-	public void setPat_closed_respiratory(boolean pat_closed_respiratory) {
-		this.pat_closed_respiratory = pat_closed_respiratory;
+
+	public void setPatClosedRespiratory(boolean patClosedRespiratory) {
+		this.patClosedRespiratory = patClosedRespiratory;
 	}
+
+
 
-	
-	public boolean isPat_closed_cancer() {
-		return pat_closed_cancer;
+	public boolean isPatClosedCancer() {
+		return patClosedCancer;
 	}
 
-	
-	public void setPat_closed_cancer(boolean pat_closed_cancer) {
-		this.pat_closed_cancer = pat_closed_cancer;
+
+
+	public void setPatClosedCancer(boolean patClosedCancer) {
+		this.patClosedCancer = patClosedCancer;
 	}
+
 
-	
-	public boolean isPat_closed_orto() {
-		return pat_closed_orto;
+
+	public boolean isPatClosedOrto() {
+		return patClosedOrto;
 	}
+
+
 
-	
-	public void setPat_closed_orto(boolean pat_closed_orto) {
-		this.pat_closed_orto = pat_closed_orto;
+	public void setPatClosedOrto(boolean patClosedOrto) {
+		this.patClosedOrto = patClosedOrto;
 	}
 
-	
-	public boolean isPat_closed_gyno() {
-		return pat_closed_gyno;
+
+
+	public boolean isPatClosedGyno() {
+		return patClosedGyno;
 	}
+
 
-	
-	public void setPat_closed_gyno(boolean pat_closed_gyno) {
-		this.pat_closed_gyno = pat_closed_gyno;
+
+	public void setPatClosedGyno(boolean patClosedGyno) {
+		this.patClosedGyno = patClosedGyno;
 	}
+
+
 
-	
-	public boolean isPat_closed_other() {
-		return pat_closed_other;
+	public boolean isPatClosedOther() {
+		return patClosedOther;
 	}
 
-	
-	public void setPat_closed_other(boolean pat_closed_other) {
-		this.pat_closed_other = pat_closed_other;
+
+
+	public void setPatClosedOther(boolean patClosedOther) {
+		this.patClosedOther = patClosedOther;
 	}
+
 
-	
-	public String getPat_closed_note() {
-		return pat_closed_note;
+
+	public String getPatClosedNote() {
+		return patClosedNote;
 	}
+
+
 
-	
-	public void setPat_closed_note(String pat_closed_note) {
-		this.pat_closed_note = pat_closed_note;
+	public void setPatClosedNote(String patClosedNote) {
+		this.patClosedNote = patClosedNote;
 	}
 
-	
-	public boolean isPat_open_nothing() {
-		return pat_open_nothing;
+
+
+	public boolean isPatOpenNothing() {
+		return patOpenNothing;
 	}
+
 
-	
-	public void setPat_open_nothing(boolean pat_open_nothing) {
-		this.pat_open_nothing = pat_open_nothing;
+
+	public void setPatOpenNothing(boolean patOpenNothing) {
+		this.patOpenNothing = patOpenNothing;
 	}
+
+
 
-	
-	public boolean isPat_open_hypertension() {
-		return pat_open_hypertension;
+	public boolean isPatOpenHypertension() {
+		return patOpenHypertension;
 	}
 
-	
-	public void setPat_open_hypertension(boolean pat_open_hypertension) {
-		this.pat_open_hypertension = pat_open_hypertension;
+
+
+	public void setPatOpenHypertension(boolean patOpenHypertension) {
+		this.patOpenHypertension = patOpenHypertension;
 	}
+
 
-	
-	public boolean isPat_open_drugAddiction() {
-		return pat_open_drugAddiction;
+
+	public boolean isPatOpenDrugaddiction() {
+		return patOpenDrugaddiction;
 	}
+
+
 
-	
-	public void setPat_open_drugAddiction(boolean pat_open_drugAddiction) {
-		this.pat_open_drugAddiction = pat_open_drugAddiction;
+	public void setPatOpenDrugaddiction(boolean patOpenDrugaddiction) {
+		this.patOpenDrugaddiction = patOpenDrugaddiction;
 	}
 
-	
-	public boolean isPat_open_cardiovascular() {
-		return pat_open_cardiovascular;
+
+
+	public boolean isPatOpenCardiovascular() {
+		return patOpenCardiovascular;
 	}
+
 
-	
-	public void setPat_open_cardiovascular(boolean pat_open_cardiovascular) {
-		this.pat_open_cardiovascular = pat_open_cardiovascular;
+
+	public void setPatOpenCardiovascular(boolean patOpenCardiovascular) {
+		this.patOpenCardiovascular = patOpenCardiovascular;
 	}
+
+
 
-	
-	public boolean isPat_open_infective() {
-		return pat_open_infective;
+	public boolean isPatOpenInfective() {
+		return patOpenInfective;
 	}
 
-	
-	public void setPat_open_infective(boolean pat_open_infective) {
-		this.pat_open_infective = pat_open_infective;
+
+
+	public void setPatOpenInfective(boolean patOpenInfective) {
+		this.patOpenInfective = patOpenInfective;
 	}
+
 
-	
-	public boolean isPat_open_endocrinometabol() {
-		return pat_open_endocrinometabol;
+
+	public boolean isPatOpenEndocrinometabol() {
+		return patOpenEndocrinometabol;
 	}
+
+
 
-	
-	public void setPat_open_endocrinometabol(boolean pat_open_endocrinometabol) {
-		this.pat_open_endocrinometabol = pat_open_endocrinometabol;
+	public void setPatOpenEndocrinometabol(boolean patOpenEndocrinometabol) {
+		this.patOpenEndocrinometabol = patOpenEndocrinometabol;
 	}
 
-	
-	public boolean isPat_open_respiratory() {
-		return pat_open_respiratory;
+
+
+	public boolean isPatOpenRespiratory() {
+		return patOpenRespiratory;
 	}
+
 
-	
-	public void setPat_open_respiratory(boolean pat_open_respiratory) {
-		this.pat_open_respiratory = pat_open_respiratory;
+
+	public void setPatOpenRespiratory(boolean patOpenRespiratory) {
+		this.patOpenRespiratory = patOpenRespiratory;
 	}
+
+
 
-	
-	public boolean isPat_open_cancer() {
-		return pat_open_cancer;
+	public boolean isPatOpenCancer() {
+		return patOpenCancer;
 	}
 
-	
-	public void setPat_open_cancer(boolean pat_open_cancer) {
-		this.pat_open_cancer = pat_open_cancer;
+
+
+	public void setPatOpenCancer(boolean patOpenCancer) {
+		this.patOpenCancer = patOpenCancer;
 	}
+
 
-	
-	public boolean isPat_open_orto() {
-		return pat_open_orto;
+
+	public boolean isPatOpenOrto() {
+		return patOpenOrto;
 	}
+
+
 
-	
-	public void setPat_open_orto(boolean pat_open_orto) {
-		this.pat_open_orto = pat_open_orto;
+	public void setPatOpenOrto(boolean patOpenOrto) {
+		this.patOpenOrto = patOpenOrto;
 	}
 
-	
-	public boolean isPat_open_gyno() {
-		return pat_open_gyno;
+
+
+	public boolean isPatOpenGyno() {
+		return patOpenGyno;
 	}
+
 
-	
-	public void setPat_open_gyno(boolean pat_open_gyno) {
-		this.pat_open_gyno = pat_open_gyno;
+
+	public void setPatOpenGyno(boolean patOpenGyno) {
+		this.patOpenGyno = patOpenGyno;
 	}
+
+
 
-	
-	public boolean isPat_open_other() {
-		return pat_open_other;
+	public boolean isPatOpenOther() {
+		return patOpenOther;
 	}
 
-	
-	public void setPat_open_other(boolean pat_open_other) {
-		this.pat_open_other = pat_open_other;
+
+
+	public void setPatOpenOther(boolean patOpenOther) {
+		this.patOpenOther = patOpenOther;
 	}
+
 
-	
-	public String getPat_open_note() {
-		return pat_open_note;
+
+	public String getPatOpenNote() {
+		return patOpenNote;
 	}
+
 
-	
-	public void setPat_open_note(String pat_open_note) {
-		this.pat_open_note = pat_open_note;
+
+	public void setPatOpenNote(String patOpenNote) {
+		this.patOpenNote = patOpenNote;
 	}
+
 
-	
-	public String getPat_surgery() {
-		return pat_surgery;
+
+	public String getPatSurgery() {
+		return patSurgery;
 	}
+
+
 
-	
-	public void setPat_surgery(String pat_surgery) {
-		this.pat_surgery = pat_surgery;
+	public void setPatSurgery(String patSurgery) {
+		this.patSurgery = patSurgery;
 	}
 
-	
-	public String getPat_allergy() {
-		return pat_allergy;
+
+
+	public String getPatAllergy() {
+		return patAllergy;
 	}
+
 
-	
-	public void setPat_allergy(String pat_allergy) {
-		this.pat_allergy = pat_allergy;
+
+	public void setPatAllergy(String patAllergy) {
+		this.patAllergy = patAllergy;
 	}
+
+
 
-	
-	public String getPat_therapy() {
-		return pat_therapy;
+	public String getPatTherapy() {
+		return patTherapy;
 	}
 
-	
-	public void setPat_therapy(String pat_therapy) {
-		this.pat_therapy = pat_therapy;
+
+
+	public void setPatTherapy(String patTherapy) {
+		this.patTherapy = patTherapy;
 	}
+
 
-	
-	public String getPat_medicine() {
-		return pat_medicine;
+
+	public String getPatMedicine() {
+		return patMedicine;
 	}
+
+
 
-	
-	public void setPat_medicine(String pat_medicine) {
-		this.pat_medicine = pat_medicine;
+	public void setPatMedicine(String patMedicine) {
+		this.patMedicine = patMedicine;
 	}
 
-	
-	public String getPat_note() {
-		return pat_note;
+
+
+	public String getPatNote() {
+		return patNote;
 	}
+
 
-	
-	public void setPat_note(String pat_note) {
-		this.pat_note = pat_note;
+
+	public void setPatNote(String patNote) {
+		this.patNote = patNote;
 	}
+
+
 
-	
-	public boolean isPhy_nutrition_normal() {
-		return phy_nutrition_normal;
+	public boolean isPhyNutritionNormal() {
+		return phyNutritionNormal;
 	}
 
-	
-	public void setPhy_nutrition_normal(boolean phy_nutrition_normal) {
-		this.phy_nutrition_normal = phy_nutrition_normal;
+
+
+	public void setPhyNutritionNormal(boolean phyNutritionNormal) {
+		this.phyNutritionNormal = phyNutritionNormal;
 	}
+
 
-	
-	public String getPhy_nutrition_abnormal() {
-		return phy_nutrition_abnormal;
+
+	public String getPhyNutritionAbnormal() {
+		return phyNutritionAbnormal;
 	}
+
+
 
-	
-	public void setPhy_nutrition_abnormal(String phy_nutrition_abnormal) {
-		this.phy_nutrition_abnormal = phy_nutrition_abnormal;
+	public void setPhyNutritionAbnormal(String phyNutritionAbnormal) {
+		this.phyNutritionAbnormal = phyNutritionAbnormal;
 	}
 
-	
-	public boolean isPhy_alvo_normal() {
-		return phy_alvo_normal;
+
+
+	public boolean isPhyAlvoNormal() {
+		return phyAlvoNormal;
 	}
+
 
-	
-	public void setPhy_alvo_normal(boolean phy_alvo_normal) {
-		this.phy_alvo_normal = phy_alvo_normal;
+
+	public void setPhyAlvoNormal(boolean phyAlvoNormal) {
+		this.phyAlvoNormal = phyAlvoNormal;
 	}
+
+
 
-	
-	public String getPhy_alvo_abnormal() {
-		return phy_alvo_abnormal;
+	public String getPhyAlvoAbnormal() {
+		return phyAlvoAbnormal;
 	}
 
-	
-	public void setPhy_alvo_abnormal(String phy_alvo_abnormal) {
-		this.phy_alvo_abnormal = phy_alvo_abnormal;
+
+
+	public void setPhyAlvoAbnormal(String phyAlvoAbnormal) {
+		this.phyAlvoAbnormal = phyAlvoAbnormal;
 	}
+
 
-	
-	public boolean isPhy_diuresis_normal() {
-		return phy_diuresis_normal;
+
+	public boolean isPhyDiuresisNormal() {
+		return phyDiuresisNormal;
 	}
+
+
 
-	
-	public void setPhy_diuresis_normal(boolean phy_diuresis_normal) {
-		this.phy_diuresis_normal = phy_diuresis_normal;
+	public void setPhyDiuresisNormal(boolean phyDiuresisNormal) {
+		this.phyDiuresisNormal = phyDiuresisNormal;
 	}
 
-	
-	public String getPhy_diuresis_abnormal() {
-		return phy_diuresis_abnormal;
+
+
+	public String getPhyDiuresisAbnormal() {
+		return phyDiuresisAbnormal;
 	}
+
 
-	
-	public void setPhy_diuresis_abnormal(String phy_diuresis_abnormal) {
-		this.phy_diuresis_abnormal = phy_diuresis_abnormal;
+
+	public void setPhyDiuresisAbnormal(String phyDiuresisAbnormal) {
+		this.phyDiuresisAbnormal = phyDiuresisAbnormal;
 	}
+
+
 
-	
-	public boolean isPhy_alcool() {
-		return phy_alcool;
+	public boolean isPhyAlcool() {
+		return phyAlcool;
 	}
 
-	
-	public void setPhy_alcool(boolean phy_alcool) {
-		this.phy_alcool = phy_alcool;
+
+
+	public void setPhyAlcool(boolean phyAlcool) {
+		this.phyAlcool = phyAlcool;
 	}
+
+
 
-	
-	public boolean isPhy_smoke() {
-		return phy_smoke;
+	public boolean isPhySmoke() {
+		return phySmoke;
 	}
 
-	
-	public void setPhy_smoke(boolean phy_smoke) {
-		this.phy_smoke = phy_smoke;
+
+
+	public void setPhySmoke(boolean phySmoke) {
+		this.phySmoke = phySmoke;
 	}
+
 
-	
-	public boolean isPhy_drug() {
-		return phy_drug;
+
+	public boolean isPhyDrug() {
+		return phyDrug;
 	}
+
+
 
-	
-	public void setPhy_drug(boolean phy_drug) {
-		this.phy_drug = phy_drug;
+	public void setPhyDrug(boolean phyDrug) {
+		this.phyDrug = phyDrug;
 	}
 
-	
-	public boolean isPhy_period_normal() {
-		return phy_period_normal;
+
+
+	public boolean isPhyPeriodNormal() {
+		return phyPeriodNormal;
 	}
+
 
-	
-	public void setPhy_period_normal(boolean phy_period_normal) {
-		this.phy_period_normal = phy_period_normal;
+
+	public void setPhyPeriodNormal(boolean phyPeriodNormal) {
+		this.phyPeriodNormal = phyPeriodNormal;
 	}
+
+
 
-	
-	public String getPhy_period_abnormal() {
-		return phy_period_abnormal;
+	public String getPhyPeriodAbnormal() {
+		return phyPeriodAbnormal;
 	}
 
-	
-	public void setPhy_period_abnormal(String phy_period_abnormal) {
-		this.phy_period_abnormal = phy_period_abnormal;
+
+
+	public void setPhyPeriodAbnormal(String phyPeriodAbnormal) {
+		this.phyPeriodAbnormal = phyPeriodAbnormal;
 	}
+
 
-	
-	public boolean isPhy_menopause() {
-		return phy_menopause;
+
+	public boolean isPhyMenopause() {
+		return phyMenopause;
 	}
+
+
 
-	
-	public void setPhy_menopause(boolean phy_menopause) {
-		this.phy_menopause = phy_menopause;
+	public void setPhyMenopause(boolean phyMenopause) {
+		this.phyMenopause = phyMenopause;
 	}
 
-	
-	public int getPhy_menopause_years() {
-		return phy_menopause_years;
+
+
+	public int getPhyMenopauseYears() {
+		return phyMenopauseYears;
 	}
+
 
-	
-	public void setPhy_menopause_years(int phy_menopause_years) {
-		this.phy_menopause_years = phy_menopause_years;
+
+	public void setPhyMenopauseYears(int phyMenopauseYears) {
+		this.phyMenopauseYears = phyMenopauseYears;
 	}
+
+
 
-	
-	public boolean isPhy_hrt_normal() {
-		return phy_hrt_normal;
+	public boolean isPhyHrtNormal() {
+		return phyHrtNormal;
 	}
 
-	
-	public void setPhy_hrt_normal(boolean phy_hrt_normal) {
-		this.phy_hrt_normal = phy_hrt_normal;
+
+
+	public void setPhyHrtNormal(boolean phyHrtNormal) {
+		this.phyHrtNormal = phyHrtNormal;
 	}
+
 
-	
-	public String getPhy_hrt_abnormal() {
-		return phy_hrt_abnormal;
+
+	public String getPhyHrtAbnormal() {
+		return phyHrtAbnormal;
 	}
+
+
 
-	
-	public void setPhy_hrt_abnormal(String phy_hrt_abnormal) {
-		this.phy_hrt_abnormal = phy_hrt_abnormal;
+	public void setPhyHrtAbnormal(String phyHrtAbnormal) {
+		this.phyHrtAbnormal = phyHrtAbnormal;
 	}
 
-	
-	public boolean isPhy_pregnancy() {
-		return phy_pregnancy;
+
+
+	public boolean isPhyPregnancy() {
+		return phyPregnancy;
 	}
+
 
-	
-	public void setPhy_pregnancy(boolean phy_pregnancy) {
-		this.phy_pregnancy = phy_pregnancy;
+
+	public void setPhyPregnancy(boolean phyPregnancy) {
+		this.phyPregnancy = phyPregnancy;
 	}
+
+
 
-	
-	public int getPhy_pregnancy_number() {
-		return phy_pregnancy_number;
+	public int getPhyPregnancyNumber() {
+		return phyPregnancyNumber;
 	}
 
-	
-	public void setPhy_pregnancy_number(int phy_pregnancy_number) {
-		this.phy_pregnancy_number = phy_pregnancy_number;
+
+
+	public void setPhyPregnancyNumber(int phyPregnancyNumber) {
+		this.phyPregnancyNumber = phyPregnancyNumber;
 	}
+
 
-	
-	public int getPhy_pregnancy_birth() {
-		return phy_pregnancy_birth;
+
+	public int getPhyPregnancyBirth() {
+		return phyPregnancyBirth;
 	}
+
+
 
-	
-	public void setPhy_pregnancy_birth(int phy_pregnancy_birth) {
-		this.phy_pregnancy_birth = phy_pregnancy_birth;
+	public void setPhyPregnancyBirth(int phyPregnancyBirth) {
+		this.phyPregnancyBirth = phyPregnancyBirth;
 	}
 
-	
-	public int getPhy_pregnancy_abort() {
-		return phy_pregnancy_abort;
+
+
+	public int getPhyPregnancyAbort() {
+		return phyPregnancyAbort;
 	}
+
 
-	
-	public void setPhy_pregnancy_abort(int phy_pregnancy_abort) {
-		this.phy_pregnancy_abort = phy_pregnancy_abort;
+
+	public void setPhyPregnancyAbort(int phyPregnancyAbort) {
+		this.phyPregnancyAbort = phyPregnancyAbort;
 	}
-	
+
+
+
 }

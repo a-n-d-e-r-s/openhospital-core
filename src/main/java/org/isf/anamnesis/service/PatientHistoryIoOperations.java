@@ -19,12 +19,30 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package org.isf.anamnesis.model;
+package org.isf.anamnesis.service;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.isf.anamnesis.model.PatientHistory;
+import org.isf.utils.db.TranslateOHServiceException;
+import org.isf.utils.exception.OHServiceException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
-@Repository
-public interface PatientHistoryIoOperationRepository extends JpaRepository<PatientHistory, Integer> {
 
+@Service
+@Transactional(rollbackFor = OHServiceException.class)
+@TranslateOHServiceException
+public class PatientHistoryIoOperations {
+
+	@Autowired
+	private PatientHistoryIoOperationRepository repository;
+
+	public PatientHistory getById(int patId) {
+		return this.repository.findById(patId).get();
+
+	}
+
+	public void saveOrUpdate(PatientHistory patHis) {
+		this.repository.save(patHis);
+	}
 }
