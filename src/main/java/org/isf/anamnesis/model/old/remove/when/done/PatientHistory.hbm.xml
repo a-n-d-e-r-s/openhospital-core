@@ -1,0 +1,212 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 13-ott-2012 15.15.02 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+ <class name="org.isf.anamnesis.model.PatientHistory" table="PATIENTHISTORY">
+  <id name="pat_id" type="int">
+   <column name="PAH_PAT_ID"/>
+   <generator class="assigned"/>
+  </id>
+  <property generated="never" lazy="false" name="family_nothing" type="boolean">
+   <column name="PAH_FAM_NOTHING"/>
+  </property>
+  <property generated="never" lazy="false" name="family_hypertension" type="boolean">
+   <column name="PAH_FAM_HYPER"/>
+  </property>
+  <property generated="never" lazy="false" name="family_drugAddiction" type="boolean">
+   <column name="PAH_FAM_DRUGADD"/>
+  </property>
+  <property generated="never" lazy="false" name="family_cardiovascular" type="boolean">
+   <column name="PAH_FAM_CARDIO"/>
+  </property>
+  <property generated="never" lazy="false" name="family_infective" type="boolean">
+   <column name="PAH_FAM_INFECT"/>
+  </property>
+  <property generated="never" lazy="false"
+   name="family_endocrinometabol" type="boolean">
+   <column name="PAH_FAM_ENDO"/>
+  </property>
+  <property generated="never" lazy="false" name="family_respiratory" type="boolean">
+   <column name="PAH_FAM_RESP"/>
+  </property>
+  <property generated="never" lazy="false" name="family_cancer" type="boolean">
+   <column name="PAH_FAM_CANCER"/>
+  </property>
+  <property generated="never" lazy="false" name="family_orto" type="boolean">
+   <column name="PAH_FAM_ORTO"/>
+  </property>
+  <property generated="never" lazy="false" name="family_gyno" type="boolean">
+   <column name="PAH_FAM_GYNO"/>
+  </property>
+   <property generated="never" lazy="false" name="family_other" type="boolean">
+   <column name="PAH_FAM_OTHER"/>
+  </property>
+  <property generated="never" lazy="false" length="100"
+   name="family_note" type="java.lang.String">
+   <column name="PAH_FAM_NOTE"/>
+  </property>
+  <property generated="never" lazy="false" name="pat_closed_nothing" type="boolean">
+   <column name="PAH_PAT_CLO_NOTHING"/>
+  </property>
+  <property generated="never" lazy="false"
+   name="pat_closed_hypertension" type="boolean">
+   <column name="PAH_PAT_CLO_HYPER"/>
+  </property>
+  <property generated="never" lazy="false"
+   name="pat_closed_drugAddiction" type="boolean">
+   <column name="PAH_PAT_CLO_DRUGADD"/>
+  </property>
+  <property generated="never" lazy="false"
+   name="pat_closed_cardiovascular" type="boolean">
+   <column name="PAH_PAT_CLO_CARDIO"/>
+  </property>
+  <property generated="never" lazy="false" name="pat_closed_infective" type="boolean">
+   <column name="PAH_PAT_CLO_INFECT"/>
+  </property>
+  <property generated="never" lazy="false"
+   name="pat_closed_endocrinometabol" type="boolean">
+   <column name="PAH_PAT_CLO_ENDO"/>
+  </property>
+  <property generated="never" lazy="false"
+   name="pat_closed_respiratory" type="boolean">
+   <column name="PAH_PAT_CLO_RESP"/>
+  </property>
+  <property generated="never" lazy="false" name="pat_closed_cancer" type="boolean">
+   <column name="PAH_PAT_CLO_CANCER"/>
+  </property>
+  <property generated="never" lazy="false" name="pat_closed_orto" type="boolean">
+   <column name="PAH_PAT_CLO_ORTO"/>
+  </property>
+  <property generated="never" lazy="false" name="pat_closed_gyno" type="boolean">
+   <column name="PAH_PAT_CLO_GYNO"/>
+  </property>
+   <property generated="never" lazy="false" name="pat_closed_other" type="boolean">
+   <column name="PAH_PAT_CLO_OTHER"/>
+  </property>
+  <property generated="never" lazy="false" length="100"
+   name="pat_closed_note" type="java.lang.String">
+   <column name="PAH_PAT_CLO_NOTE"/>
+  </property>
+  <property generated="never" lazy="false" name="pat_open_nothing" type="boolean">
+   <column name="PAH_PAT_OPN_NOTHING"/>
+  </property>
+  <property generated="never" lazy="false" name="pat_open_hypertension" type="boolean">
+   <column name="PAH_PAT_OPN_HYPER"/>
+  </property>
+  <property generated="never" lazy="false" name="pat_open_drugAddiction" type="boolean">
+   <column name="PAH_PAT_OPN_DRUGADD"/>
+  </property>
+  <property generated="never" lazy="false"
+   name="pat_open_cardiovascular" type="boolean">
+   <column name="PAH_PAT_OPN_CARDIO"/>
+  </property>
+  <property generated="never" lazy="false" name="pat_open_infective" type="boolean">
+   <column name="PAH_PAT_OPN_INFECT"/>
+  </property>
+  <property generated="never" lazy="false"
+   name="pat_open_endocrinometabol" type="boolean">
+   <column name="PAH_PAT_OPN_ENDO"/>
+  </property>
+  <property generated="never" lazy="false" name="pat_open_respiratory" type="boolean">
+   <column name="PAH_PAT_OPN_RESP"/>
+  </property>
+  <property generated="never" lazy="false" name="pat_open_cancer" type="boolean">
+   <column name="PAH_PAT_OPN_CANCER"/>
+  </property>
+  <property generated="never" lazy="false" name="pat_open_orto" type="boolean">
+   <column name="PAH_PAT_OPN_ORTO"/>
+  </property>
+  <property generated="never" lazy="false" name="pat_open_gyno" type="boolean">
+   <column name="PAH_PAT_OPN_GYNO"/>
+  </property>
+   <property generated="never" lazy="false" name="pat_open_other" type="boolean">
+   <column name="PAH_PAT_OPN_OTHER"/>
+  </property>
+  <property generated="never" lazy="false" length="100"
+   name="pat_open_note" type="java.lang.String">
+   <column name="PAH_PAT_OPN_NOTE"/>
+  </property>
+  <property generated="never" lazy="false" length="200"
+   name="pat_surgery" type="java.lang.String">
+   <column name="PAH_PAT_SURGERY"/>
+  </property>
+  <property generated="never" lazy="false" length="100"
+   name="pat_allergy" type="java.lang.String">
+   <column name="PAH_PAT_ALLERGY"/>
+  </property>
+  <property generated="never" lazy="false" length="200"
+   name="pat_therapy" type="java.lang.String">
+   <column name="PAH_PAT_THERAPY"/>
+  </property>
+  <property generated="never" lazy="false" length="200"
+   name="pat_medicine" type="java.lang.String">
+   <column name="PAH_PAT_MEDICINE"/>
+  </property>
+  <property generated="never" lazy="false" length="100" name="pat_note" type="java.lang.String">
+   <column name="PAH_PAT_NOTE"/>
+  </property>
+  <property generated="never" lazy="false" name="phy_nutrition_normal" type="boolean">
+   <column name="PAH_PHY_NUTR_NOR"/>
+  </property>
+  <property generated="never" lazy="false" length="30"
+   name="phy_nutrition_abnormal" type="java.lang.String">
+   <column name="PAH_PHY_NUTR_ABN"/>
+  </property>
+  <property generated="never" lazy="false" name="phy_alvo_normal" type="boolean">
+   <column name="PAH_PHY_ALVO_NOR"/>
+  </property>
+  <property generated="never" lazy="false" length="30"
+   name="phy_alvo_abnormal" type="java.lang.String">
+   <column name="PAH_PHY_ALVO_ABN"/>
+  </property>
+  <property generated="never" lazy="false" name="phy_diuresis_normal" type="boolean">
+   <column name="PAH_PHY_DIURE_NOR"/>
+  </property>
+  <property generated="never" lazy="false" length="30"
+   name="phy_diuresis_abnormal" type="java.lang.String">
+   <column name="PAH_PHY_DIURE_ABN"/>
+  </property>
+  <property generated="never" lazy="false" name="phy_alcool" type="boolean">
+   <column name="PAH_PHY_ALCOOL"/>
+  </property>
+  <property generated="never" lazy="false" name="phy_smoke" type="boolean">
+   <column name="PAH_PHY_SMOKE"/>
+  </property>
+  <property generated="never" lazy="false" name="phy_drug" type="boolean">
+   <column name="PAH_PHY_DRUG"/>
+  </property>
+  <property generated="never" lazy="false" name="phy_period_normal" type="boolean">
+   <column name="PAH_PHY_PERIOD_NOR"/>
+  </property>
+  <property generated="never" lazy="false" length="30"
+   name="phy_period_abnormal" type="java.lang.String">
+   <column name="PAH_PHY_PERIOD_ABN"/>
+  </property>
+  <property generated="never" lazy="false" name="phy_menopause" type="boolean">
+   <column name="PAH_PHY_MENOP"/>
+  </property>
+  <property generated="never" lazy="false" name="phy_menopause_years" type="int">
+   <column name="PAH_PHY_MENOP_Y"/>
+  </property>
+  <property generated="never" lazy="false" name="phy_hrt_normal" type="boolean">
+   <column name="PAH_PHY_HRT_NOR"/>
+  </property>
+  <property generated="never" lazy="false" length="30"
+   name="phy_hrt_abnormal" type="java.lang.String">
+   <column name="PAH_PHY_HRT_ABN"/>
+  </property>
+  <property generated="never" lazy="false" name="phy_pregnancy" type="boolean">
+   <column name="PAH_PHY_PREG"/>
+  </property>
+  <property generated="never" lazy="false" name="phy_pregnancy_number" type="int">
+   <column name="PAH_PHY_PREG_N"/>
+  </property>
+  <property generated="never" lazy="false" name="phy_pregnancy_birth" type="int">
+   <column name="PAH_PHY_PREG_BIRTH"/>
+  </property>
+  <property generated="never" lazy="false" name="phy_pregnancy_abort" type="int">
+   <column name="PAH_PHY_PREG_ABORT"/>
+  </property>
+ </class>
+</hibernate-mapping>
