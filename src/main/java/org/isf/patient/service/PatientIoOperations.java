@@ -24,7 +24,10 @@ package org.isf.patient.service;
 import java.util.List;
 import java.util.Map;
 
+import javax.persistence.EntityManager;
+
 import org.hibernate.Hibernate;
+import org.hibernate.Session;
 import org.isf.generaldata.GeneralData;
 import org.isf.patient.model.Patient;
 import org.isf.patient.model.PatientMergedEvent;
@@ -58,6 +61,10 @@ public class PatientIoOperations {
 	public final static String LOAD_FROM_DB = "DB";
 
 	public static final String NOT_DELETED_STATUS = "N";
+
+	@Autowired
+	private EntityManager em;
+	
 	@Autowired
 	private PatientIoOperationRepository repository;
 	@Autowired
@@ -128,6 +135,7 @@ public class PatientIoOperations {
 			if (isLoadProfilePhotoFromDb) {
 				Hibernate.initialize(patient.getPatientProfilePhoto());
 			} else {
+				((Session) this.em.getDelegate()).evict(patient);
 				fileSystemPatientPhotoRepository.loadInPatient(patient, GeneralData.PATIENTPHOTOSTORAGE);
 			}
 			return patient;
