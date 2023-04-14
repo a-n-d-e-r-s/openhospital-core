@@ -38,7 +38,7 @@ public class ExamListDocumentGeneratorStrategy implements DocumentGeneratorStrat
 
 	@Override
 	public boolean accept(int documentType) {
-		return 1 == documentType;
+		return DocumentType.EXAM_LIST == documentType;
 	}
 
 	@Override

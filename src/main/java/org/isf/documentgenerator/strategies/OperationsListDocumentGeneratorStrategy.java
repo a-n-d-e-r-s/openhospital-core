@@ -37,7 +37,7 @@ public class OperationsListDocumentGeneratorStrategy implements DocumentGenerato
 
 	@Override
 	public boolean accept(int documentType) {
-		return 1 == documentType;
+		return DocumentType.OPERATIONS_LIST == documentType;
 	}
 
 	@Override
