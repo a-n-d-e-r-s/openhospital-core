@@ -14,11 +14,11 @@ public class DocumentGeneratorStrategyContext {
 	@Autowired
 	private Set<DocumentGeneratorStrategy> strategies;
 
-	public Optional<DocumentGeneratorStrategy> calculateStrategy(int documentType) {
+	public Optional<DocumentGeneratorStrategy> calculateStrategy(final int documentType) {
 		return strategies.stream().filter(strategy -> strategy.accept(documentType)).findFirst();
 	}
 
-	public JasperReportResultDto generate(DocumentGeneratorStrategy strategy, HashMap<String, Object> parameters) throws OHServiceException {
+	public JasperReportResultDto generate(final DocumentGeneratorStrategy strategy, final HashMap<String, Object> parameters) throws OHServiceException {
 		return strategy.generate(parameters);
 	}
 }
