@@ -1,14 +1,20 @@
 package org.isf.documentgenerator.strategies.common;
 
+
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
 import org.isf.stat.dto.JasperReportResultDto;
+import org.isf.utils.exception.OHException;
 
 import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
@@ -51,5 +57,15 @@ public class DocumentGeneratorStrategyCommon {
 		JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, parameters, connection);
 		connection.close();
 		return new JasperReportResultDto(jasperPrint, jasperFilename, filename);
+	}
+
+	public static File saveToDisk(JasperPrint jasperPrint) throws OHException {
+		try {
+		OutputStream output = new FileOutputStream(new File("c:/output/JasperReport.pdf"));
+			JasperExportManager.exportReportToPdfStream(jasperPrint, output);
+			return new File("");
+		} catch (JRException | FileNotFoundException e) {
+			throw new OHException("Error saving file");
+		}
 	}
 }

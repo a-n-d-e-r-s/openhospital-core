@@ -1,5 +1,6 @@
 package org.isf.documentgenerator.strategies;
 
+import java.io.File;
 import java.sql.Connection;
 import java.util.HashMap;
 
@@ -21,7 +22,7 @@ import org.springframework.stereotype.Component;
 import net.sf.jasperreports.engine.JasperExportManager;
 
 @Component
-public class DiseasesListDocumentGeneratorStrategy implements DocumentGeneratorStrategy {
+public class DiseasesListDocumentGeneratorStrategy extends DocumentGeneratorStrategy {
 
 	private static final String RPT_BASE = "rpt_base";
 
@@ -35,13 +36,17 @@ public class DiseasesListDocumentGeneratorStrategy implements DocumentGeneratorS
 	@Autowired
 	private DataSource dataSource;
 
-	@Override
-	public boolean accept(int documentType) {
-		return DocumentType.DISEASES_LIST == documentType;
+	public int getDocumentType() {
+		return DocumentType.DISEASES_LIST;
 	}
 
 	@Override
-	public JasperReportResultDto generate(HashMap<String, Object> parameters) throws OHServiceException {
+	public boolean accept(int documentType) {
+		return getDocumentType() == documentType;
+	}
+
+	@Override
+	public File regenerate(HashMap<String, Object> parameters) throws OHServiceException {
 
 		try {
 			Hospital hospital = hospitalManager.getHospital();
@@ -53,7 +58,7 @@ public class DiseasesListDocumentGeneratorStrategy implements DocumentGeneratorS
 			JasperReportResultDto result = DocumentGeneratorStrategyCommon.generateJasperReport(connection,
 							DocumentGeneratorStrategyCommon.compileJasperFilename(RPT_BASE, jasperFileName), pdfFilename, parameters);
 			JasperExportManager.exportReportToPdfFile(result.getJasperPrint(), pdfFilename);
-			return result;
+			return DocumentGeneratorStrategyCommon.saveToDisk(result.getJasperPrint());
 		} catch (Exception e) {
 			LOGGER.error("", e);
 			throw new OHReportException(e, new OHExceptionMessage(MessageBundle.getMessage(STAT_REPORTERROR_MSG)));
