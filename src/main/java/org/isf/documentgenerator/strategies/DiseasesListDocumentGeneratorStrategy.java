@@ -37,7 +37,7 @@ public class DiseasesListDocumentGeneratorStrategy implements DocumentGeneratorS
 
 	@Override
 	public boolean accept(int documentType) {
-		return 1 == documentType;
+		return 2 == documentType;
 	}
 
 	@Override
