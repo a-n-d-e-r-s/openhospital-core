@@ -12,7 +12,10 @@ public abstract class DocumentGeneratorStrategy {
 
 	public abstract boolean accept(final int documentType);
 
-	public File generate(HashMap<String, Object> parameters) throws OHServiceException {
+	public File generate(HashMap<String, Object> parameters, boolean forceRegeneration) throws OHServiceException {
+		if (forceRegeneration) {
+			return regenerate(parameters);
+		}
 		Optional<File> fileOpt = this.retrieveFromCache();
 		if (fileOpt.isEmpty()) {
 			return regenerate(parameters);

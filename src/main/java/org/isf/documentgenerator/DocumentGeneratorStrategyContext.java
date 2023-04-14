@@ -18,7 +18,7 @@ public class DocumentGeneratorStrategyContext {
 		return strategies.stream().filter(strategy -> strategy.accept(documentType)).findFirst();
 	}
 
-	public File generate(final DocumentGeneratorStrategy strategy, final HashMap<String, Object> parameters) throws OHServiceException {
-		return strategy.generate(parameters);
+	public File generate(final DocumentGeneratorStrategy strategy, final HashMap<String, Object> parameters, boolean forceRegeneration) throws OHServiceException {
+		return strategy.generate(parameters, forceRegeneration);
 	}
 }
