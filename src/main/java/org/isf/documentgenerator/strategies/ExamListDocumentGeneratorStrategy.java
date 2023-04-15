@@ -7,6 +7,7 @@ import java.util.HashMap;
 import javax.sql.DataSource;
 
 import org.isf.documentgenerator.strategies.common.DocumentGeneratorStrategyCommon;
+import org.isf.documentgenerator.strategies.constants.DocumentType;
 import org.isf.generaldata.MessageBundle;
 import org.isf.hospital.manager.HospitalBrowsingManager;
 import org.isf.hospital.model.Hospital;

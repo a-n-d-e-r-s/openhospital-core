@@ -1,4 +1,4 @@
-package org.isf.documentgenerator.strategies;
+package org.isf.documentgenerator.strategies.constants;
 
 public interface DocumentType {
 
