@@ -8,7 +8,10 @@ import java.util.Set;
 import org.isf.documentgenerator.strategies.DocumentGeneratorStrategy;
 import org.isf.utils.exception.OHServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+
+@Service
 public class DocumentGeneratorStrategyContext {
 
 	@Autowired
