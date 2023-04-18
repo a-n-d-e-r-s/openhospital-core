@@ -6,6 +6,7 @@ import java.util.HashMap;
 
 import javax.sql.DataSource;
 
+import org.isf.documentgenerator.strategies.common.DocumentGeneratorStrategy;
 import org.isf.documentgenerator.strategies.common.DocumentGeneratorStrategyCommon;
 import org.isf.documentgenerator.strategies.constants.DocumentType;
 import org.isf.generaldata.MessageBundle;

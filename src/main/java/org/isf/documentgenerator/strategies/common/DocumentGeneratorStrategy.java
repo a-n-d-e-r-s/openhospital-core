@@ -1,4 +1,4 @@
-package org.isf.documentgenerator.strategies;
+package org.isf.documentgenerator.strategies.common;
 
 import java.io.File;
 import java.util.HashMap;
@@ -25,7 +25,7 @@ public abstract class DocumentGeneratorStrategy {
 
 	public abstract File regenerate(HashMap<String, Object> parameters) throws OHServiceException;
 
-	public Optional<File> retrieveFromCache() throws OHServiceException {
+	protected Optional<File> retrieveFromCache() throws OHServiceException {
 		File file = new File(this.getDocumentType() + "");
 		return Optional.ofNullable(file);
 	}
